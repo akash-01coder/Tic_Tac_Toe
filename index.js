@@ -17,11 +17,11 @@ const winningPositions = [
     [2,4,6]
 ];
 
-//let's create a function to initialise the game
+
 function initGame() {
     currentPlayer = "X";
     gameGrid = ["","","","","","","","",""];
-    //UI pr empty bhi karna padega boxes ko
+   
     boxes.forEach((box, index) => {
         box.innerText = "";
         boxes[index].style.pointerEvents = "all";
@@ -49,7 +49,7 @@ function checkGameOver() {
     let answer = "";
 
     winningPositions.forEach((position) => {
-        //all 3 boxes should be non-empty and exactly same in value
+       
         if( (gameGrid[position[0]] !== "" || gameGrid[position[1]] !== "" || gameGrid[position[2]] !== "") 
             && (gameGrid[position[0]] === gameGrid[position[1]] ) && (gameGrid[position[1]] === gameGrid[position[2]])) {
 
@@ -61,7 +61,7 @@ function checkGameOver() {
                 } 
                     
 
-                //disable pointer events
+               
                 boxes.forEach((box) => {
                     box.style.pointerEvents = "none";
                 })
@@ -73,21 +73,21 @@ function checkGameOver() {
             }
     });
 
-    //it means we have a winner
+    
     if(answer !== "" ) {
         gameInfo.innerText = `Winner Player - ${answer}`;
         newGameBtn.classList.add("active");
         return;
     }
 
-    //We know, NO Winner Found, let's check whether there is tie
+    
     let fillCount = 0;
     gameGrid.forEach((box) => {
         if(box !== "" )
             fillCount++;
     });
 
-    //board is Filled, game is TIE
+   
     if(fillCount === 9) {
         gameInfo.innerText = "Game Tied !";
         newGameBtn.classList.add("active");
