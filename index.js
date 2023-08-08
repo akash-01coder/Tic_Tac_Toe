@@ -25,7 +25,7 @@ function initGame() {
     boxes.forEach((box, index) => {
         box.innerText = "";
         boxes[index].style.pointerEvents = "all";
-        //one more thing is missing, initialise box with css properties again
+      
         box.classList = `box box${index+1}`;
     });
     newGameBtn.classList.remove("active");
@@ -53,7 +53,7 @@ function checkGameOver() {
         if( (gameGrid[position[0]] !== "" || gameGrid[position[1]] !== "" || gameGrid[position[2]] !== "") 
             && (gameGrid[position[0]] === gameGrid[position[1]] ) && (gameGrid[position[1]] === gameGrid[position[2]])) {
 
-                //check if winner is X
+              
                 if(gameGrid[position[0]] === "X") 
                     answer = "X";
                 else {
@@ -66,7 +66,7 @@ function checkGameOver() {
                     box.style.pointerEvents = "none";
                 })
 
-                //now we know X/O is a winner
+                
                 boxes[position[0]].classList.add("win");
                 boxes[position[1]].classList.add("win");
                 boxes[position[2]].classList.add("win");
@@ -100,9 +100,9 @@ function handleClick(index) {
         boxes[index].innerText = currentPlayer;
         gameGrid[index] = currentPlayer;
         boxes[index].style.pointerEvents = "none";
-        //swap karo turn ko
+        
         swapTurn();
-        //check koi jeet toh nahi gya
+    
         checkGameOver();
     }
 }
